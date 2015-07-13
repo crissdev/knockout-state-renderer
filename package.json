@@ -1,0 +1,25 @@
+{
+  "name": "knockout-state-renderer",
+  "version": "0.0.0",
+  "description": "A Knockout based rendering layer for the abstract-state-router",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/crissdev/knockout-state-renderer.git"
+  },
+  "keywords": [
+    "knockout",
+    "state",
+    "router",
+    "renderer"
+  ],
+  "author": "crissdev <criss.trifan@gmail.com> (http://crissdev.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/crissdev/knockout-state-renderer/issues"
+  },
+  "homepage": "https://github.com/crissdev/knockout-state-renderer#readme",
+  "peerDependencies": {
+    "knockout": "^3.3.0"
+  }
+}
