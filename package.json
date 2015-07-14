@@ -1,6 +1,6 @@
 {
   "name": "knockout-state-renderer",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Knockout based rendering layer for the abstract-state-router",
   "main": "index.js",
   "repository": {
