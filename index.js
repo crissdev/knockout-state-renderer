@@ -2,7 +2,9 @@
 var ko = require('knockout');
 
 
-module.exports = function KnockoutStateRenderer(/* options */) {
+module.exports = function KnockoutStateRenderer(options) {
+  options = ko.utils.extend({dataItemAlias: '$page', childElementSelector: 'ui-view'}, options);
+
   return function makeRenderer(stateRouter) {
     var stateChangeEndDependency = ko.observable();
     stateRouter.on('stateChangeEnd', stateChangeEndDependency.valueHasMutated);
@@ -20,7 +22,7 @@ module.exports = function KnockoutStateRenderer(/* options */) {
     }
 
     function getChildElement(domApi, cb) {
-      var element = domApi.parentElement.querySelector('ui-view');
+      var element = domApi.parentElement.querySelector(options.childElementSelector);
       cb(null, element);
     }
 
@@ -50,8 +52,8 @@ module.exports = function KnockoutStateRenderer(/* options */) {
     function _applyBindings(parentElement, viewModel, templateNodes) {
       var parentContext = ko.contextFor(parentElement);
       var bindingContext = parentContext
-        ? parentContext.createChildContext(viewModel, '$page')
-        : new ko.bindingContext(viewModel, null, '$page');
+        ? parentContext.createChildContext(viewModel, options.dataItemAlias)
+        : new ko.bindingContext(viewModel, null, options.dataItemAlias);
 
       viewModel.stateIsActive = stateIsActive;
       viewModel.makePath = stateRouter.makePath.bind(stateRouter);

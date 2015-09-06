@@ -11,10 +11,10 @@ Use [Knockout](http://github.com/knockout/knockout/) with [abstract-state-router
 ```js
 
 var StateRouter = require('abstract-state-router')
-var knockoutRenderer = require('knockout-state-renderer')()
+var knockoutRenderer = require('knockout-state-renderer')
 var domready = require('domready')
 
-var stateRouter = StateRouter(knockoutRenderer, 'body')
+var stateRouter = StateRouter(knockoutRenderer(/* options */), 'body')
 
 // add whatever states to the state router
 
@@ -22,3 +22,22 @@ domready(function() {
     stateRouter.evaluateCurrentRoute('login')
 })
 ```
+
+See [state-router-example](https://github.com/crissdev/state-router-example) for an implementation using
+this renderer.
+
+
+## API
+
+The renderer implementation accepts some options to control data binding inside the templates.
+
+
+#### dataItemAlias
+
+An alias used when the binding context is created, accessible inside the templates. The default value 
+is `$page`.
+
+#### childElementSelector
+
+The CSS selector used to find the element where the child state should be rendered. The default value
+is `ui-view`.
