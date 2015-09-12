@@ -17,6 +17,9 @@ module.exports = function KnockoutStateRenderer(options) {
     };
 
     function destroy(domApi, cb) {
+      if (typeof domApi.viewModel.dispose === 'function') {
+        domApi.viewModel.dispose();
+      }
       ko.virtualElements.emptyNode(domApi.parentElement);
       cb(null);
     }
@@ -49,11 +52,9 @@ module.exports = function KnockoutStateRenderer(options) {
     }
 
     function reset(context, cb) {
-      ko.virtualElements.emptyNode(context.domApi.parentElement);
-
-      context.domApi.viewModel = context.domApi._createViewModel();
-      _applyBindings(context.domApi.parentElement, context.domApi.viewModel, context.domApi._templateNodes);
-
+      if (typeof context.domApi.viewModel.resetContext === 'function') {
+        context.domApi.viewModel.resetContext(context.content);
+      }
       cb(null);
     }
 
@@ -80,7 +81,7 @@ module.exports = function KnockoutStateRenderer(options) {
       var result = [];
       for (var i = 0, j = arrayLikeObject.length; i < j; i++) {
         result.push(arrayLikeObject[i]);
-      };
+      }
       return result;
     }
 
