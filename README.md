@@ -27,7 +27,7 @@ domready(function() {
 })
 ```
 
-See [state-router-example](https://github.com/crissdev/state-router-example) for an implementation using
+See [state-router-example](https://github.com/crissdev/state-router-example/tree/gh-pages/implementations/knockout) for an implementation using
 this renderer.
 
 
